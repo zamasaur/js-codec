@@ -13,6 +13,8 @@ export class CoDec {
 		if (this.constructor.name === "CoDec") {
 			throw new Error("Cannot instantiate an interface.");
 		}
+		this.encode.bind(this);
+		this.decode.bind(this);
 	}
 
 	/**

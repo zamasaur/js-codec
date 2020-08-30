@@ -16,6 +16,8 @@ export class Base64CoDec extends CoDec {
 	constructor() {
 		super();
 		Object.seal(this);
+		this.encode.bind(this);
+		this.decode.bind(this);
 	}
 	
 	/**
