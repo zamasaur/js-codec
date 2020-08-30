@@ -14,9 +14,9 @@ export class UrlCoDec extends CoDec {
 	
 	constructor() {
 		super();
-		Object.seal(this);
 		this.encode.bind(this);
 		this.decode.bind(this);
+		Object.seal(this);
 	}
 	
 	/**
