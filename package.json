@@ -1,0 +1,10 @@
+{
+	"name": "@zamasaur/js-codec",
+	"description": "A package to encode and decode strings.",
+	"type": "module",
+	"private": true,
+	"dependencies": {},
+	"devDependencies": {
+		"jsdoc": "latest"
+	}
+}
