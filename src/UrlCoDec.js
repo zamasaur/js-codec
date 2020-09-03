@@ -12,18 +12,15 @@ import { CoDec } from "./CoDec.js";
 */
 export class UrlCoDec extends CoDec {
 	
+	/**
+	 * Constructor.
+	 */
 	constructor() {
 		super();
-		this.encode.bind(this);
-		this.decode.bind(this);
 		Object.seal(this);
 	}
 	
-	/**
-	* Returns an encoded string.
-	*
-	* @param {string} string
-	*/
+	/** @inheritdoc */
 	encode(string) {
 		return encodeURIComponent(string + "")
 		.replace(/!/g, '%21')
@@ -33,11 +30,7 @@ export class UrlCoDec extends CoDec {
 		.replace(/\*/g, '%2A');
 	}
 	
-	/**
-	* Returns a decoded string.
-	*
-	* @param {string} string
-	*/
+	/** @inheritdoc */
 	decode(string) {
 		return decodeURIComponent((string + "")
 		.replace(/%(?![\da-f]{2})/gi, function () {

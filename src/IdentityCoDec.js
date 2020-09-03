@@ -11,27 +11,20 @@ import { CoDec } from "./CoDec.js";
 */
 export class IdentityCoDec extends CoDec {
 	
+	/**
+	 * Constructor.
+	 */
 	constructor() {
 		super();
-		this.encode.bind(this);
-		this.decode.bind(this);
 		Object.seal(this);
 	}
 	
-	/**
-	* Returns an encoded string.
-	* 
-	* @param {string} string 
-	*/
+	/** @inheritdoc */
 	encode(string) {
 		return string;
 	}
 	
-	/**
-	* Returns a decoded string.
-	* 
-	* @param {string} string 
-	*/
+	/** @inheritdoc */
 	decode(string) {
 		return string;
 	}

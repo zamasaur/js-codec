@@ -13,18 +13,15 @@ import { CoDec } from "./CoDec.js";
 */
 export class Base64CoDec extends CoDec {
 	
+	/**
+	 * Constructor.
+	 */
 	constructor() {
 		super();
-		this.encode.bind(this);
-		this.decode.bind(this);
 		Object.seal(this);
 	}
 	
-	/**
-	* Returns an encoded string.
-	*
-	* @param {string} string
-	*/
+	/** @inheritdoc */
 	encode(string) {
 		string = Base64CoDec._b64EncodeUnicode(string);
 		string = string.replace("+", "-", string);
@@ -33,11 +30,7 @@ export class Base64CoDec extends CoDec {
 		return string;
 	}
 	
-	/**
-	* Returns a decoded string.
-	*
-	* @param {string} string
-	*/
+	/** @inheritdoc */
 	decode(string) {
 		string = string.replace(" ", "", string);
 		string = string.replace("_", "/", string);
@@ -46,14 +39,14 @@ export class Base64CoDec extends CoDec {
 		return string;
 	}
 	
-	static _b64EncodeUnicode(string) {
+	_b64EncodeUnicode(string) {
 		return btoa(encodeURIComponent(string).replace(/%([0-9A-F]{2})/g,
 		function toSolidBytes(match, p1) {
 			return String.fromCharCode('0x' + p1);
 		}));
 	}
 	
-	static _b64DecodeUnicode(string) {
+	_b64DecodeUnicode(string) {
 		return decodeURIComponent(atob(string).split('').map(function (c) {
 			return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
 		}).join(''));
