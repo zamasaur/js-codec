@@ -23,7 +23,7 @@ export class Base64CoDec extends CoDec {
 	
 	/** @inheritdoc */
 	encode(string) {
-		string = Base64CoDec._b64EncodeUnicode(string);
+		string = this._b64EncodeUnicode(string);
 		string = string.replace(/\+/gm, "-", string);
 		string = string.replace(/\//gm, "_", string);
 		string = string.replace(/=/gm, "", string);
@@ -35,7 +35,7 @@ export class Base64CoDec extends CoDec {
 		string = string.replace(/ /gm, "", string);
 		string = string.replace(/_/gm, "/", string);
 		string = string.replace(/-/gm, "+", string);
-		string = Base64CoDec._b64DecodeUnicode(string);
+		string = this._b64DecodeUnicode(string);
 		return string;
 	}
 	
