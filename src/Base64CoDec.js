@@ -24,22 +24,23 @@ export class Base64CoDec extends CoDec {
 	/** @inheritdoc */
 	encode(string) {
 		string = Base64CoDec._b64EncodeUnicode(string);
-		string = string.replace("+", "-", string);
-		string = string.replace("/", "_", string);
-		string = string.replace("=", "", string);
+		string = string.replace(/\+/gm, "-", string);
+		string = string.replace(/\//gm, "_", string);
+		string = string.replace(/=/gm, "", string);
 		return string;
 	}
 	
 	/** @inheritdoc */
 	decode(string) {
-		string = string.replace(" ", "", string);
-		string = string.replace("_", "/", string);
-		string = string.replace("-", "+", string);
+		string = string.replace(/ /gm, "", string);
+		string = string.replace(/_/gm, "/", string);
+		string = string.replace(/-/gm, "+", string);
 		string = Base64CoDec._b64DecodeUnicode(string);
 		return string;
 	}
 	
 	_b64EncodeUnicode(string) {
+		var string = string.replace(/"/g,'\\"');
 		return btoa(encodeURIComponent(string).replace(/%([0-9A-F]{2})/g,
 		function toSolidBytes(match, p1) {
 			return String.fromCharCode('0x' + p1);

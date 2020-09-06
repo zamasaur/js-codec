@@ -22,6 +22,7 @@ export class UrlCoDec extends CoDec {
 	
 	/** @inheritdoc */
 	encode(string) {
+		var string = string.replace(/"/g,'\\"');
 		return encodeURIComponent(string + "")
 		.replace(/!/g, '%21')
 		.replace(/'/g, '%27')
