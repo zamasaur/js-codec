@@ -40,7 +40,6 @@ export class Base64CoDec extends CoDec {
 	}
 	
 	_b64EncodeUnicode(string) {
-		var string = string.replace(/"/g,'\\"');
 		return btoa(encodeURIComponent(string).replace(/%([0-9A-F]{2})/g,
 		function toSolidBytes(match, p1) {
 			return String.fromCharCode('0x' + p1);
